@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scxml xmlns="http://www.w3.org/2005/07/scxml" version="1.0" binding="early" name="statemachine" qt:editorversion="4.11.1" xmlns:qt="http://www.qt.io/2015/02/scxml-ext" initial="State_1">
+    <qt:editorinfo initialGeometry="17.29;55.46;-20;-20;40;40"/>
+    <state id="State_1">
+        <qt:editorinfo geometry="137;109;-60;-50;120;100" scenegeometry="137;109;77;59;120;100"/>
+        <transition type="external" event="button1_2" target="State_2">
+            <qt:editorinfo movePoint="-25;5"/>
+        </transition>
+    </state>
+    <state id="State_2">
+        <qt:editorinfo geometry="137;247;-60;-50;120;100" scenegeometry="137;247;77;197;120;100"/>
+        <transition type="external" event="button2_1" target="State_1">
+            <qt:editorinfo endTargetFactors="78.68;89.66"/>
+        </transition>
+    </state>
+</scxml>
