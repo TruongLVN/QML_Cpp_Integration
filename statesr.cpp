@@ -3,3 +3,4 @@
 stateSr::stateSr()
 {
   std::cout<<"alo 124";
+}
