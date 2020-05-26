@@ -2,5 +2,5 @@
 #include <iostream>
 stateSr::stateSr()
 {
-  std::cout<<"alo asdasdasdsad";
+  
 }
