@@ -2,5 +2,5 @@
 #include <iostream"
 stateSr::stateSr()
 {
-  std::cout<<"asdasdffffffffff";
+  std::cout<<"";
 }
