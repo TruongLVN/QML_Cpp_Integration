@@ -1,0 +1,33 @@
+if(GTEST_FOUND)
+        find_library(GMOCK gmock)
+        find_library(GMOCK_MAIN gmock_main)
+
+        # Test payment ap
+        set(TEST_APP_NAME test_payment_ap)
+        add_executable(${TEST_APP_NAME} ${PAYMENT_AP_SRC_FILES} ${PAYMENT_AP_TEST_FILE} 
+                                        ${EMVCL_IF_SRC_FILES}
+                                        ${EMVCT_IF_SRC_DIR}/ContactValidator.cpp
+                                        ${EMVCT_IF_SRC_DIR}/ICCInterface.cpp
+                                        ${EMVCL_EP_SRC_DIR}/CmnEMVData.cpp
+                                        ${EMVCL_EP_SRC_DIR}/CmnTLVFunc.cpp
+                                        ${EMVCL_EP_SRC_DIR}/Emvcl_CmmData.cpp
+                                        ${EMVCL_EP_SRC_DIR}/Emvcl_P2PE_Section.cpp)
+        target_link_libraries(${TEST_APP_NAME} ${GALILEO_LIBRARY_LIST} ${GTEST_LIBRARIES} ${GTEST_MAIN_LIBRARY} 
+        ${EMVCL_EP_LIBRARY_LIST} gmock gmock_main)
+        target_include_directories(${TEST_APP_NAME} PUBLIC ${GALILEO_HEADER_DIR}
+                                                           ${MOCK_DIR}
+                                                           ${COMMON_HEADER_DIR}
+                                                           ${GTEST_INCLUDE_DIRS}
+                                                           ${PAYMENT_AP_SRC_DIR})
+                                                           
+                                                           
+             # Collect source file
+FILE(GLOB EMVCL_IF_SRC_FILES ${EMVCL_IF_SRC_DIR}/*.cpp ${PAYMENT_AP_SRC_DIR}/main/TLVData.cpp ${PAYMENT_AP_SRC_DIR}/main/Utility.cpp
+                             ${CMAKE_SOURCE_DIR}/src/emvcl_ep/src/*.cpp)
+FILE(GLOB EMVCT_IF_SRC_FILES ${EMVCT_IF_SRC_DIR}/*.cpp)
+FILE(GLOB PAYMENT_AP_SRC_FILES ${PAYMENT_AP_SRC_DIR}/*/*.cpp)
+FILE(GLOB PAYMENT_AP_SRC_MAIN ${PAYMENT_AP_SRC_DIR}/*.cpp)
+
+FILE(GLOB PAYMENT_AP_TEST_FILE ${PAYMENT_AP_TEST_DIR}/*/*.cpp ${MOCK_DIR}/*.cpp)
+FILE(GLOB EMVCL_IF_TEST_FILE ${EMVCL_IF_TEST_DIR}/*.cpp ${MOCK_DIR}/*.cpp)
+FILE(GLOB EMVCT_IF_TEST_FILE ${EMVCT_IF_TEST_DIR}/*.cpp ${MOCK_DIR}/*.cpp)
